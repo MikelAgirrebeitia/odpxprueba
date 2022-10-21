@@ -3,13 +3,13 @@ from distutils.core import setup
 setup(
   name = 'odpxprueba',        
   packages = ['odpxprueba'],   
-  version = '1.7',     
+  version = '1.8',     
   license='MIT',       
   description = 'The fundamental toolkit for outliers search and visualization',   
   author = 'Iker Cumplido',                   
   author_email = 'ikumpli@gmail.com',      
   url = 'https://github.com/ikumpli/odpxprueba/',   
-  download_url = 'https://github.com/ikumpli/odpxprueba/archive/refs/tags/v1.7.tar.gz',    
+  download_url = 'https://github.com/ikumpli/odpxprueba/archive/refs/tags/v1.8.tar.gz',    
   keywords = ['OUTLIERS', 'VISUALIZATION', 'PANDAS'],   
   install_requires=[           
           'pandas',

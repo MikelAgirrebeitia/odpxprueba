@@ -46,7 +46,7 @@ class odpxprueba:
         sns.stripplot(data=df, y=col[0], hue="outliers", palette=palette, size = df['size'])
         plt.xlabel('Observations', fontsize=14, fontweight='bold'), plt.ylabel(title, fontsize=14, fontweight='bold'), plt.title(f'{title} distribution', fontsize=16, fontweight='bold');
         plt.grid(True, alpha=0.3, linestyle='--', color='black', axis='y')
-        plt.show()
+        plt.show();
 
     def __dataframe_plot(self, df, col, outliers, size):
 
@@ -101,7 +101,7 @@ class odpxprueba:
 
     ########################################################################################################################################################################################################################
 
-    def plot_outliers(self, size = [5, 7], palette = ((133/255, 202/255, 194/255), (38/255, 70/255, 83/255)) ):
+    def plot_outliers(self, col, size = [5, 7], palette = ((133/255, 202/255, 194/255), (38/255, 70/255, 83/255)) ):
 
         """
 
@@ -128,27 +128,27 @@ class odpxprueba:
 
         numeric_columns = self.df.select_dtypes(include=numpy.number).columns
         print(numeric_columns)
-        if type(self.col) != list: self.col = [self.col]
+        if type(col) != list: col = [col]
         else: pass
 
-        if (set(self.col).issubset(numeric_columns)):
-            if len(self.col) == 1:
+        if (set(col).issubset(numeric_columns)):
+            if len(col) == 1:
 
                 if self.method == 'iqr':  
-                    outliers = {v: self.__outliers_iqr(self.df, v) for v in self.col}
-                    new_df = self.__dataframe_plot(self.df, self.col, outliers, size)
-                    self.__stripplot(new_df, self.col, palette)
+                    outliers = {v: self.__outliers_iqr(self.df, v) for v in col}
+                    new_df = self.__dataframe_plot(self.df, col, outliers, size)
+                    self.__stripplot(new_df, col, palette)
 
                 elif self.method == 'zscore': 
-                    outliers = {v: self.__outliers_zscore(self.df, v) for v in self.col}
-                    new_df = self.__dataframe_plot(self.df, self.col, outliers, size)
-                    self.__stripplot(new_df, self.col, palette)            
+                    outliers = {v: self.__outliers_zscore(self.df, v) for v in col}
+                    new_df = self.__dataframe_plot(self.df, col, outliers, size)
+                    self.__stripplot(new_df, col, palette)            
                     
                 elif self.method == 'all':
-                    outliers_iqr, outliers_zscore =  [self.__outliers_iqr(self.df, v) for v in self.col], [self.__outliers_zscore(self.df, v) for v in self.col]
-                    outliers = {v: list(set(outliers_iqr[i] + outliers_zscore[i])) for i, v in enumerate(self.col)}
-                    new_df = self.__dataframe_plot(self.df, self.col, outliers, size)
-                    self.__stripplot(new_df, self.col, palette)
+                    outliers_iqr, outliers_zscore =  [self.__outliers_iqr(self.df, v) for v in col], [self.__outliers_zscore(self.df, v) for v in col]
+                    outliers = {v: list(set(outliers_iqr[i] + outliers_zscore[i])) for i, v in enumerate(col)}
+                    new_df = self.__dataframe_plot(self.df, col, outliers, size)
+                    self.__stripplot(new_df, col, palette)
 
                 else: raise ValueError('Method must be iqr, zscore or all')
 
