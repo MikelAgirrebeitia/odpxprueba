@@ -65,7 +65,7 @@ class odpxprueba:
         method: The method to detect outliers. It can be "iqr", "zscore" or "all". "all" is the default option (default = 'all').
         
         """
-
+        print(df)
         if type(df) != pandas.core.frame.DataFrame:
             print("MAL")
             print(type(df))
