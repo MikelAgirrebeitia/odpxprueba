@@ -127,6 +127,7 @@ class odpxprueba:
         else: pass
 
         numeric_columns = self.df.select_dtypes(include=numpy.number).columns
+        print(numeric_columns)
         if type(self.col) != list: self.col = [self.col]
         else: pass
 
