@@ -9,7 +9,7 @@ setup(
   author = 'Iker Cumplido',                   
   author_email = 'ikumpli@gmail.com',      
   url = 'https://github.com/ikumpli/odpxprueba/',   
-  download_url = 'https://github.com/ikumpli/odpxprueba/archive/refs/tags/v1.4.tar.gz',    
+  download_url = 'https://github.com/ikumpli/odpxprueba/archive/refs/tags/v1.5.tar.gz',    
   keywords = ['OUTLIERS', 'VISUALIZATION', 'PANDAS'],   
   install_requires=[           
           'pandas',
