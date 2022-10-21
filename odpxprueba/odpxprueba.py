@@ -68,6 +68,7 @@ class odpxprueba:
 
         if type(df) != pandas.core.frame.DataFrame:
             print("MAL")
+            print(type(df))
             try: 
                 df = pandas.DataFrame(df)
                 df.columns = [str(x) for x in df.columns]
