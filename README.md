@@ -41,7 +41,7 @@ pip install outdpik
 - [seaborn - Provides a high-level interface for drawing attractive statistical graphics](https://seaborn.pydata.org/)
 
 ## License
-[MIT](LICENSE)
+[MIT](license.txt)
 
 ## Documentation
 The official documentation is hosted on FALTA: https://pandas.pydata.org/pandas-docs/stable
