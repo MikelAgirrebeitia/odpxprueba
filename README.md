@@ -3,6 +3,11 @@
 <h1 align="center">
 <img src="/branding/logo/primary/outdpik.png" width="300">
 </h1><br>
+# outdpik: fundamental toolkit for outlier analysis and visualization
+[![PyPI Latest Release](https://img.shields.io/pypi/v/outdpik.svg)](https://pypi.org/project/outdpik/)
+
+## What is it?
+
 
 ## Main Features
 
