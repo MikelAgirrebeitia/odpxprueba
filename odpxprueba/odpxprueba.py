@@ -1,6 +1,6 @@
 
-import pandas as pd
-import numpy as np
+import pandas
+import numpy
 from scipy import stats
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -30,7 +30,7 @@ class odpxprueba:
 
         """ With this private function we can detect outliers using the zscore method. """
 
-        z = np.abs(stats.zscore(df[col]))
+        z = numpy.abs(stats.zscore(df[col]))
         return list(df[(z > 3) | (z < -3)].index) 
 
     def __stripplot(self, df, col, palette):
@@ -48,7 +48,7 @@ class odpxprueba:
         """ A private function to create the dataframe necesary to use the __stripplot function """
 
         colname, outliers_tag, size = list(df[col[0]]), ['normal' if _ not in outliers[col[0]] else 'outlier' for _ in range(len(df))], [size[0] if _ not in outliers[col[0]] else size[1] for _ in range(len(df))]
-        new_df = pd.DataFrame([colname, outliers_tag, size]).T.rename(columns={0: col[0], 1: 'outliers', 2: 'size'})
+        new_df = pandas.DataFrame([colname, outliers_tag, size]).T.rename(columns={0: col[0], 1: 'outliers', 2: 'size'})
         new_df['size'] = new_df['size'].astype(int)
         return new_df
 
@@ -66,17 +66,18 @@ class odpxprueba:
         
         """
 
-        if type(df) != pd.core.frame.DataFrame:
+        if type(df) != pandas.core.frame.DataFrame:
+            print("MAL")
             try: 
-                df = pd.DataFrame(df)
+                df = pandas.DataFrame(df)
                 df.columns = [str(x) for x in df.columns]
                 for column in df.columns:
-                    try: df[column] = pd.to_numeric(df[column])
+                    try: df[column] = pandas.to_numeric(df[column])
                     except: pass
             except: raise ValueError('The data must be a DataFrame, list or a numpy array')
         else: pass
 
-        numeric_columns = df.select_dtypes(include=np.number).columns
+        numeric_columns = df.select_dtypes(include=numpy.number).columns
         if col == 'all': col = numeric_columns
         elif type(col) != list: col = [col]
         else: raise ValueError('Use list, an string or use "all" argument to select all columns')
@@ -111,17 +112,17 @@ class odpxprueba:
 
         """
 
-        if type(df) != pd.core.frame.DataFrame:
+        if type(df) != pandas.core.frame.DataFrame:
             try: 
-                df = pd.DataFrame(df)
+                df = pandas.DataFrame(df)
                 df.columns = [str(x) for x in df.columns]
                 for column in df.columns:
-                    try: df[column] = pd.to_numeric(df[column])
+                    try: df[column] = pandas.to_numeric(df[column])
                     except: pass
             except: raise ValueError('The data must be a DataFrame, list or an array')
         else: pass
 
-        numeric_columns = df.select_dtypes(include=np.number).columns
+        numeric_columns = df.select_dtypes(include=numpy.number).columns
         if type(col) != list: col = [col]
         else: pass
 
