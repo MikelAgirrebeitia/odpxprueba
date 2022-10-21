@@ -8,8 +8,8 @@ setup(
   description = 'The fundamental toolkit for outliers search and visualization',   
   author = 'Iker Cumplido',                   
   author_email = 'ikumpli@gmail.com',      
-  url = 'https://github.com/DanielPuentee/outdpik',   
-  download_url = 'https://github.com/DanielPuentee/outdpik/archive/refs/tags/v_1.0.tar.gz',    
+  url = 'https://github.com/ikumpli/odpxprueba/',   
+  download_url = 'https://github.com/ikumpli/odpxprueba/archive/refs/tags/v1.0.tar.gz',    
   keywords = ['OUTLIERS', 'VISUALIZATION', 'PANDAS'],   
   install_requires=[           
           'pandas',
