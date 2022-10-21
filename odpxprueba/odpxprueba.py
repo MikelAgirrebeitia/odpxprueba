@@ -14,6 +14,9 @@ It incorporates the use of graphics for a better understanding of these.
 """
 
 class odpxprueba:
+
+    def __init__(self):
+        pass
     
     """ The class do not requiere any argument """
 
