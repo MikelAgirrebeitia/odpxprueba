@@ -43,9 +43,9 @@ class odpxprueba:
         """ A private function to make a plot of one numeric feature where outliers are indicated """
         
         title = col[0].capitalize()
-        sns.stripplot(data=df, y=col[0], hue="outliers", palette=palette, size = df['size'])
+        sns.stripplot(data=df, y=col[0], hue="outliers", palette=palette, size = df['size']);
         plt.xlabel('Observations', fontsize=14, fontweight='bold'), plt.ylabel(title, fontsize=14, fontweight='bold'), plt.title(f'{title} distribution', fontsize=16, fontweight='bold');
-        plt.grid(True, alpha=0.3, linestyle='--', color='black', axis='y')
+        plt.grid(True, alpha=0.3, linestyle='--', color='black', axis='y');
         plt.show();
 
     def __dataframe_plot(self, df, col, outliers, size):
@@ -118,7 +118,7 @@ class odpxprueba:
         if self.df[col].isnull().sum() > 0:
             df = self.df.copy()
             df.dropna(subset=[col], inplace=True)
-            print(f"The selected column has null values. {df.shape[0] - self.df.shape[0]} rows were removed in order to plot the data.")
+            print(f"The selected column has null values. {self.df.shape[0] - df.shape[0]} rows were removed in order to plot the data.")
         else: df = self.df.copy()
 
         if type(df) != pandas.core.frame.DataFrame:
@@ -141,18 +141,18 @@ class odpxprueba:
                 if self.method == 'iqr':  
                     outliers = {v: self.__outliers_iqr(df, v) for v in col}
                     new_df = self.__dataframe_plot(df, col, outliers, size)
-                    self.__stripplot(new_df, col, palette)
+                    self.__stripplot(new_df, col, palette);
 
                 elif self.method == 'zscore': 
                     outliers = {v: self.__outliers_zscore(df, v) for v in col}
                     new_df = self.__dataframe_plot(df, col, outliers, size)
-                    self.__stripplot(new_df, col, palette)            
+                    self.__stripplot(new_df, col, palette);            
                     
                 elif self.method == 'all':
                     outliers_iqr, outliers_zscore =  [self.__outliers_iqr(df, v) for v in col], [self.__outliers_zscore(df, v) for v in col]
                     outliers = {v: list(set(outliers_iqr[i] + outliers_zscore[i])) for i, v in enumerate(col)}
                     new_df = self.__dataframe_plot(df, col, outliers, size)
-                    self.__stripplot(new_df, col, palette)
+                    self.__stripplot(new_df, col, palette);
 
                 else: raise ValueError('Method must be iqr, zscore or all')
 
