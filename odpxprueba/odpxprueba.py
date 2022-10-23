@@ -141,18 +141,18 @@ class odpxprueba:
                 if self.method == 'iqr':  
                     outliers = {v: self.__outliers_iqr(df, v) for v in col}
                     new_df = self.__dataframe_plot(df, col, outliers, size)
-                    self.__stripplot(new_df, col, palette);
+                    return self.__stripplot(new_df, col, palette)
 
                 elif self.method == 'zscore': 
                     outliers = {v: self.__outliers_zscore(df, v) for v in col}
                     new_df = self.__dataframe_plot(df, col, outliers, size)
-                    self.__stripplot(new_df, col, palette);            
+                    return self.__stripplot(new_df, col, palette)       
                     
                 elif self.method == 'all':
                     outliers_iqr, outliers_zscore =  [self.__outliers_iqr(df, v) for v in col], [self.__outliers_zscore(df, v) for v in col]
                     outliers = {v: list(set(outliers_iqr[i] + outliers_zscore[i])) for i, v in enumerate(col)}
                     new_df = self.__dataframe_plot(df, col, outliers, size)
-                    self.__stripplot(new_df, col, palette);
+                    return self.__stripplot(new_df, col, palette)
 
                 else: raise ValueError('Method must be iqr, zscore or all')
 
