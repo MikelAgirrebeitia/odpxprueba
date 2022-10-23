@@ -115,7 +115,7 @@ class odpxprueba:
         palette: A tuple with the colors to use in the plot. The first value is for the normal points and the second for the outliers (default = ((133/255, 202/255, 194/255), (38/255, 70/255, 83/255))).
 
         """
-        if self.df.col.isnull().sum() > 0:
+        if self.df[col].isnull().sum() > 0:
             df = self.df.copy()
             df.dropna(subset=[col], inplace=True)
             print(f"The selected column has null values. {df.shape[0] - self.df.shape[0]} rows were removed in order to plot the data.")
