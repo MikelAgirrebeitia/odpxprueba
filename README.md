@@ -7,6 +7,7 @@
 # outdpik: Fundamental toolkit for outlier analysis and visualization
 
 [![PyPI Latest Release](https://img.shields.io/pypi/v/outdpik.svg)](https://pypi.org/project/outdpik/)
+[![PyPI License](https://img.shields.io/pypi/l/jMetalPy.svg)](https://github.com/ikumpli/odpxprueba/blob/main/license.txt)
 
 ## What is it?
 Outdpik is an open source Python package that provides different methods for outlier detection. 
@@ -33,6 +34,27 @@ Package Index (PyPI)](https://pypi.org/project/outdpik)
 pip install outdpik
 ```
 
+## Usage 🤙
+Examples of configuring and running outpdik:
+
+```sh
+import outpdik as outdp
+
+outdp = outdp()
+```
+
+We proceed to detect outliers:
+
+```sh
+outdp.outliers(df = df, cols = "all")
+```
+Plotting advantages:
+
+```sh
+outdp.plot_outliers(df = df, col = "x")
+```
+<img src=branding/logo/primary/graph.png width=450 alt="Strip plot outliers detection">
+
 ## Dependencies
 - [pandas - Provides fast, flexible, and expressive data structures designed to make working with "relational" or "labeled" data both easy and intuitive](https://pandas.pydata.org/)
 - [NumPy - Adds support for large, multi-dimensional arrays, matrices and high-level mathematical functions to operate on these arrays](https://www.numpy.org)
@@ -41,12 +63,11 @@ pip install outdpik
 - [seaborn - Provides a high-level interface for drawing attractive statistical graphics](https://seaborn.pydata.org/)
 
 ## License
-[MIT](license.txt)
+This project is licensed under the terms of the [MIT](license.txt) - see the LICENSE file for details.
 
 ## Documentation
 The official documentation is hosted on FALTA: https://pandas.pydata.org/pandas-docs/stable
 
 ## Development
-
 Want to contribute? Great!
 Open a discussion in Github in this repo and we will answer as soon as possible.
