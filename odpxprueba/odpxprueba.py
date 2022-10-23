@@ -115,23 +115,23 @@ class odpxprueba:
         palette: A tuple with the colors to use in the plot. The first value is for the normal points and the second for the outliers (default = ((133/255, 202/255, 194/255), (38/255, 70/255, 83/255))).
 
         """
-        if self.df.isnull().sum().sum() > 0:
-            num_rows = self.df.shape[0]
-            print("The selected column has null values. They will be removed in order to plot the data.")
-            self.df = self.df.dropna()
-            print(f"{num_rows - self.df.shape[0]} rows were removed.")
+        if self.df.col.isnull().sum() > 0:
+            df = self.df.copy()
+            df.dropna(subset=[col], inplace=True)
+            print(f"The selected column has null values. {df.shape[0] - self.df.shape[0]} rows were removed in order to plot the data.")
+        else: df = self.df.copy()
 
-        if type(self.df) != pandas.core.frame.DataFrame:
+        if type(df) != pandas.core.frame.DataFrame:
             try: 
-                self.df = pandas.DataFrame(self.df)
-                self.df.columns = [str(x) for x in self.df.columns]
-                for column in self.df.columns:
-                    try: self.df[column] = pandas.to_numeric(self.df[column])
+                df = pandas.DataFrame(df)
+                df.columns = [str(x) for x in df.columns]
+                for column in df.columns:
+                    try: df[column] = pandas.to_numeric(df[column])
                     except: pass
             except: raise ValueError('The data must be a DataFrame, list or an array')
         else: pass
 
-        numeric_columns = self.df.select_dtypes(include=numpy.number).columns
+        numeric_columns = df.select_dtypes(include=numpy.number).columns
         if type(col) != list: col = [col]
         else: pass
 
@@ -139,19 +139,19 @@ class odpxprueba:
             if len(col) == 1:
 
                 if self.method == 'iqr':  
-                    outliers = {v: self.__outliers_iqr(self.df, v) for v in col}
-                    new_df = self.__dataframe_plot(self.df, col, outliers, size)
+                    outliers = {v: self.__outliers_iqr(df, v) for v in col}
+                    new_df = self.__dataframe_plot(df, col, outliers, size)
                     self.__stripplot(new_df, col, palette)
 
                 elif self.method == 'zscore': 
-                    outliers = {v: self.__outliers_zscore(self.df, v) for v in col}
-                    new_df = self.__dataframe_plot(self.df, col, outliers, size)
+                    outliers = {v: self.__outliers_zscore(df, v) for v in col}
+                    new_df = self.__dataframe_plot(df, col, outliers, size)
                     self.__stripplot(new_df, col, palette)            
                     
                 elif self.method == 'all':
-                    outliers_iqr, outliers_zscore =  [self.__outliers_iqr(self.df, v) for v in col], [self.__outliers_zscore(self.df, v) for v in col]
+                    outliers_iqr, outliers_zscore =  [self.__outliers_iqr(df, v) for v in col], [self.__outliers_zscore(df, v) for v in col]
                     outliers = {v: list(set(outliers_iqr[i] + outliers_zscore[i])) for i, v in enumerate(col)}
-                    new_df = self.__dataframe_plot(self.df, col, outliers, size)
+                    new_df = self.__dataframe_plot(df, col, outliers, size)
                     self.__stripplot(new_df, col, palette)
 
                 else: raise ValueError('Method must be iqr, zscore or all')
