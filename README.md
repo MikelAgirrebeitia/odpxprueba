@@ -8,6 +8,7 @@
 
 [![PyPI Latest Release](https://img.shields.io/pypi/v/outdpik.svg)](https://pypi.org/project/outdpik/)
 [![PyPI License](https://img.shields.io/pypi/l/jMetalPy.svg)](https://github.com/ikumpli/odpxprueba/blob/main/license.txt)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 ## What is it?
 Outdpik is an open source Python package that provides different methods for outlier detection. 
@@ -34,23 +35,22 @@ Package Index (PyPI)](https://pypi.org/project/outdpik)
 pip install outdpik
 ```
 
-## Usage 🤙
+## How to use outdpik 🤙
 Examples of configuring and running outpdik:
 
-```sh
+```python
 import outpdik as outdp
-
 outdp = outdp()
 ```
 
-We proceed to detect outliers:
+We proceed to detect outliers returning a dictionary of numeric features and the outliers instances:
 
-```sh
-outdp.outliers(df = df, cols = "all")
+```python
+outliers_dict = outdp.outliers(df = df, cols = "all")
 ```
 Plotting advantages:
 
-```sh
+```python
 outdp.plot_outliers(df = df, col = "x")
 ```
 <img src=branding/logo/primary/graph.png width=450 alt="Strip plot outliers detection">
