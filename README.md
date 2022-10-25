@@ -54,7 +54,7 @@ Plotting advantages:
 ```python
 outdp.plot_outliers(df = df, col = "x")
 ```
-<img src=https://github.com/DanielPuentee/outdpik/blob/main/branding/logo/primary/graph.png?raw=true width=450 alt="Strip plot outliers detection">
+<img src="https://github.com/DanielPuentee/outdpik/blob/main/branding/logo/primary/graph.png?raw=true" width=450 alt="Strip plot outliers detection">
 
 ## Dependencies
 - [pandas - Provides fast, flexible, and expressive data structures designed to make working with "relational" or "labeled" data both easy and intuitive](https://pandas.pydata.org/)
