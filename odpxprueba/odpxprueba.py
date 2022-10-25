@@ -80,7 +80,7 @@ class odpxprueba:
                     except: pass
             except: raise ValueError('The data must be a DataFrame, list or a numpy array')
         else: pass
-
+        
         numeric_columns = self.df.select_dtypes(include=numpy.number).columns
         if self.col == 'all': self.col = numeric_columns
         elif type(self.col) != list: self.col = [self.col]
@@ -118,8 +118,9 @@ class odpxprueba:
         if self.df[col].isnull().sum() > 0:
             df = self.df.copy()
             df.dropna(subset=[col], inplace=True)
+            df.reset_index(drop=True, inplace=True)
             print(f"The selected column has null values. {self.df.shape[0] - df.shape[0]} rows were removed in order to plot the data.")
-        else: df = self.df.copy()
+        else: df = self.df.reset_index(drop=True).copy()
 
         if type(df) != pandas.core.frame.DataFrame:
             try: 
