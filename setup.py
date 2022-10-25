@@ -1,5 +1,9 @@
 
 from distutils.core import setup
+from pathlib import Path
+this_directory = Path(__file__).parent
+long_description = (this_directory / "README.md").read_text()
+
 setup(
   name = 'odpxprueba',        
   packages = ['odpxprueba'],   
@@ -11,6 +15,8 @@ setup(
   url = 'https://github.com/ikumpli/odpxprueba/',   
   download_url = 'https://github.com/ikumpli/odpxprueba/archive/refs/tags/1.17.tar.gz',    
   keywords = ['OUTLIERS', 'VISUALIZATION', 'PANDAS'],   
+  long_description=long_description,
+  long_description_content_type='text/markdown',
   install_requires=[           
           'pandas',
           'numpy',
