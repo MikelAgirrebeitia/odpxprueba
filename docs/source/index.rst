@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Daniel Puente Calculator's documentation!
+Outdpik: The fundamental toolkit for outliers search and visualization
 ==================================
 
 .. toctree::
@@ -14,54 +14,40 @@ Welcome to Daniel Puente Calculator's documentation!
 
 ==================
 
-Para sumar 2 números se puede emplear la función ``calculadora.suma(a, b)``:
-         .. py:function:: def suma(a, b):
+First, outdpik class is instanciated = ``outdpik = outdpik()``. It requieres no arguments.
 
-            Suma 2 numeros
 
-            :param a: Primer numero
-            :type a: int or float
-            :param b: Segundo numero
-            :type b: int or float
-            :return: Suma de los 2 numeros
-            :rtype: int or float
+Searching for outiers ``outdpik.outliers(df = *, columns = "all", method = "all")``:
+         .. py:function:: def outliers(df, columns, method):
 
-Para restar 2 números se puede emplear la función ``calculadora.resta(a, b)``:
-         .. py:function:: def resta(a, b):
+            It returns a dictionary with the columns selected and the outliers
 
-            Resta 2 numeros
+            :param df: The set to explore
+            :type df: pd.DataFrame, np.array and list
+            :param columns: Selected columns, by default = "all". "all" parameter will return the outliers for all the numeric columns.
+            :type columns: list and string
+            :param method: Method to use for outliers search. "iqr", "zscore" and 'all' are available. "all" parameter will return the outliers for all the methods.
+            :type method: string
+            :return: Dictionary of outliers
+            :rtype: dict
 
-            :param a: Primer numero
-            :type a: int or float
-            :param b: Segundo numero
-            :type b: int or float
-            :return: Resta de los 2 numeros
-            :rtype: int or float
+Plot outiers ``outdpik.outliers(df = *, columns = *, method = "all", size = [5, 7], palette = ((133/255, 202/255, 194/255), (38/255, 70/255, 83/255)))``:
+         .. py:function:: def outliers_plot(df, columns, method, size, palette):
 
-Para multiplicar 2 números se puede emplear la función ``calculadora.multi(a, b)``:
-         .. py:function:: def multi(a, b):
+            It returns a strip plot with the outliers marked in other color
 
-            Multiplica 2 numeros
-
-            :param a: Primer numero
-            :type a: int or float
-            :param b: Segundo numero
-            :type b: int or float
-            :return: Multiplicacion de los 2 numeros
-            :rtype: int or float
-
-Para dividir 2 números se puede emplear la función ``calculadora.divir(a, b)``:
-         .. py:function:: def division(a, b):
-
-            Divide 2 numeros
-
-            :param a: Primer numero
-            :type a: int or float
-            :param b: Segundo numero
-            :type b: int or float
-            :raise calculadora.DivisionEntreCero: If b = 0
-            :return: Division de los 2 numeros
-            :rtype: int or float 
+            :param df: The set to explore
+            :type df: pd.DataFrame, np.array and list
+            :param columns: Selected column. Only one and numeric column can be selected.
+            :type columns: list and string
+            :param method: Method to use for outliers search. "iqr", "zscore" and 'all' are available. "all" parameter will return the outliers for all the methods. Default value, method = "all"
+            :type method: string
+            :param size: Size of the plot. Default value, size = [5, 7]
+            :type size: list
+            :param palette: Color palette to use. Default value, palette = [5, 7]
+            :type palette: tuple of 3 elements each
+            :return: Strip plot of the selected column
+            :rtype: plt.figure
 
 
 .. * :ref:`genindex`
